@@ -6,34 +6,24 @@ class Eurkey < Formula
     version "1.3"
   
     def install
-      require 'open-uri'
-  
-      # URLs for the EurKEY files within the same repository
-      keylayout_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/main/releases/1.3/EurKEY.keylayout"
-      icns_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/main/releases/1.3/EurKEY.icns"
-  
-      # Define target directory
-      target_dir = "#{ENV['HOME']}/Library/Keyboard Layouts/"
-      mkdir_p target_dir unless File.directory?(target_dir)
-  
-      # Download and write files to the target directory
-      begin
-        { "EurKEY.keylayout" => keylayout_url, "EurKEY.icns" => icns_url }.each do |filename, url|
-          open("#{target_dir}/#{filename}", "wb") do |file|
-            file.write URI.open(url).read
-          end
+        # Define target directory
+        keyboard_layouts_dir = "#{ENV['HOME']}/Library/Keyboard Layouts"
+    
+        # Create target directory if it doesn't exist
+        mkdir_p keyboard_layouts_dir
+    
+        begin
+          # Extract and install the keylayout and icns files
+          system "unzip", "EurKEY.zip", "-d", keyboard_layouts_dir
+        rescue => e
+          onoe "Error installing EurKEY: #{e}"
         end
-      rescue OpenURI::HTTPError => e
-        odie "Download failed: #{e.message}"
-      rescue IOError => e
-        odie "Error writing to file: #{e.message}"
+      end
+    
+      def caveats
+        <<~EOS
+          EurKEY Keyboard Layout has been installed to #{ENV['HOME']}/Library/Keyboard Layouts.
+          Please log out and log back in for the changes to take effect.
+        EOS
       end
     end
-  
-    def caveats
-      <<~EOS
-        EurKEY Keyboard Layout has been installed.
-        Please log out and log back in for the changes to take effect.
-      EOS
-    end
-  end
