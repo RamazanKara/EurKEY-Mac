@@ -6,23 +6,29 @@ class Eurkey < Formula
     version "1.3"
   
     def install
-        # Define target directory
-        keyboard_layouts_dir = "#{ENV['HOME']}/Library/Keyboard Layouts"
+        # Unzip the files to the prefix directory
+        begin
+          system "unzip", "EurKEY.zip", "-d", prefix
+        rescue => e
+          onoe "Error unzipping EurKEY files: #{e}"
+        end
     
-        # Create target directory if it doesn't exist
+        # Define target directory for keyboard layouts in the user's library
+        keyboard_layouts_dir = "#{ENV['HOME']}/Library/Keyboard Layouts"
         mkdir_p keyboard_layouts_dir
     
+        # Symlink the keylayout and icns files to the target directory
         begin
-          # Extract and install the keylayout and icns files
-          system "unzip", "EurKEY.zip", "-d", keyboard_layouts_dir
+          ln_s "#{prefix}/EurKEY.keylayout", "#{keyboard_layouts_dir}/EurKEY.keylayout"
+          ln_s "#{prefix}/EurKEY.icns", "#{keyboard_layouts_dir}/EurKEY.icns"
         rescue => e
-          onoe "Error installing EurKEY: #{e}"
+          onoe "Error creating symlinks for EurKEY: #{e}"
         end
       end
     
       def caveats
         <<~EOS
-          EurKEY Keyboard Layout has been installed to #{ENV['HOME']}/Library/Keyboard Layouts.
+          EurKEY Keyboard Layout has been installed to #{keyboard_layouts_dir}.
           Please log out and log back in for the changes to take effect.
         EOS
       end
