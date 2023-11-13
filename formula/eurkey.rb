@@ -1,16 +1,16 @@
 class Eurkey < Formula
     desc "Install EurKEY Keyboard Layout"
-    homepage "https://github.com/RamazanKara/EurKEY"
+    homepage "https://github.com/RamazanKara/homebrew-eurkey"
     url "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKEY.zip"
-    sha256 "00f2cbc4b11c473e99ea3aab0725539a257ef40959afc3e4ea4cd46c00b0687e"
+    sha256 "3a583cb5f8ac4761fb05ce1a99bf15894d0918af2ff86639dea67960f16bebb7"
     version "1.3"
   
     def install
       require 'open-uri'
   
       # URLs for the EurKEY files within the same repository
-      keylayout_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKey.keylayout"
-      icns_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKey.icns"
+      keylayout_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKEY.keylayout"
+      icns_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKEY.icns"
   
       # Define target directory
       target_dir = "#{ENV['HOME']}/Library/Keyboard Layouts/"
