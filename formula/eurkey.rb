@@ -2,7 +2,7 @@ class Eurkey < Formula
     desc "Install EurKEY Keyboard Layout"
     homepage "https://github.com/RamazanKara/EurKEY"
     url "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKEY.zip"
-    sha256 "..." # toDo
+    sha256 "00f2cbc4b11c473e99ea3aab0725539a257ef40959afc3e4ea4cd46c00b0687e"
     version "1.3"
   
     def install
