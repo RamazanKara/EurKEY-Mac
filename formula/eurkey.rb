@@ -7,6 +7,7 @@ class Eurkey < Formula
   
     def install
         # Unzip the files to the prefix directory
+        keyboard_layouts_dir = "#{ENV['HOME']}/Library/Keyboard Layouts"
         begin
           system "unzip", "EurKEY.zip", "-d", prefix
         rescue => e
@@ -28,7 +29,7 @@ class Eurkey < Formula
     
       def caveats
         <<~EOS
-          EurKEY Keyboard Layout has been installed to #{keyboard_layouts_dir}.
+          EurKEY Keyboard Layout has been installed to #{ENV['HOME']}/Library/Keyboard Layouts.
           Please log out and log back in for the changes to take effect.
         EOS
       end
