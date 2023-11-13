@@ -4,7 +4,7 @@ class Eurkey < Formula
     url "https://github.com/RamazanKara/homebrew-eurkey/raw/main/releases/1.3/EurKEY.zip"
     sha256 "3a583cb5f8ac4761fb05ce1a99bf15894d0918af2ff86639dea67960f16bebb7"
     version "1.3"
-  
+    
     def install
         # Create a subdirectory in the prefix directory to store the actual files
         eurkey_dir = prefix/"EurKEY"
@@ -22,8 +22,8 @@ class Eurkey < Formula
     
         # Symlink the keylayout and icns files to the target directory
         begin
-          ln_s eurkey_dir/"EurKEY.keylayout", keyboard_layouts_dir/"EurKEY.keylayout"
-          ln_s eurkey_dir/"EurKEY.icns", keyboard_layouts_dir/"EurKEY.icns"
+          ln_s File.join(eurkey_dir, "EurKEY.keylayout"), File.join(keyboard_layouts_dir, "EurKEY.keylayout")
+          ln_s File.join(eurkey_dir, "EurKEY.icns"), File.join(keyboard_layouts_dir, "EurKEY.icns")
         rescue => e
           onoe "Error creating symlinks for EurKEY: #{e}"
         end
@@ -36,4 +36,3 @@ class Eurkey < Formula
         EOS
       end
     end
-    
