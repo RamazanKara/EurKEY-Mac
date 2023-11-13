@@ -6,24 +6,27 @@ class Eurkey < Formula
     version "1.3"
   
     def install
-        # Unzip the files to the prefix directory
         keyboard_layouts_dir = "#{ENV['HOME']}/Library/Keyboard Layouts"
+    
         begin
           system "unzip", "EurKEY.zip", "-d", prefix
         rescue => e
           onoe "Error unzipping EurKEY files: #{e}"
         end
     
-        # Define target directory for keyboard layouts in the user's library
-        keyboard_layouts_dir = "#{ENV['HOME']}/Library/Keyboard Layouts"
         mkdir_p keyboard_layouts_dir
     
         # Symlink the keylayout and icns files to the target directory
         begin
           ln_s "#{prefix}/EurKEY.keylayout", "#{keyboard_layouts_dir}/EurKEY.keylayout"
+        rescue => e
+          onoe "Error creating symlink for EurKEY.keylayout: #{e}"
+        end
+    
+        begin
           ln_s "#{prefix}/EurKEY.icns", "#{keyboard_layouts_dir}/EurKEY.icns"
         rescue => e
-          onoe "Error creating symlinks for EurKEY: #{e}"
+          onoe "Error creating symlink for EurKEY.icns: #{e}"
         end
       end
     
