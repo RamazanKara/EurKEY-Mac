@@ -9,8 +9,8 @@ class Eurkey < Formula
       require 'open-uri'
   
       # URLs for the EurKEY files within the same repository
-      keylayout_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKEY.keylayout"
-      icns_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKEY.icns"
+      keylayout_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKey.keylayout"
+      icns_url = "https://github.com/RamazanKara/homebrew-eurkey/raw/master/releases/1.3/EurKey.icns"
   
       # Define target directory
       target_dir = "#{ENV['HOME']}/Library/Keyboard Layouts/"
