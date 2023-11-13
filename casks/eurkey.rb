@@ -2,7 +2,7 @@ cask "eurkey" do
   version "1.3"
   sha256 :no_check
 
-  url "https://github.com/RamazanKara/EurKEY-Mac/raw/main/archive/main.zip",
+  url "https://github.com/RamazanKara/EurKEY-Mac/archive/main.zip",
       verified: "github.com/RamazanKara/EurKEY-Mac/"
   name "EurKEY keyboard layout"
   desc "Keyboard Layout for Europeans, Coders and Translators"
